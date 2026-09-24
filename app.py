@@ -10,23 +10,32 @@ st.set_page_config(
 )
 
 st.title("House Price Prediction")
-st.write("Enter the details below to estimate the house price.")
+st.write(
+    "Enter information about a neighborhood or Local area"
+    "to estimate its typical house price."
+)
 
 longitude = st.number_input("Longitude", value=-122.23, format="%.5f")
 
 latitude = st.number_input("Latitude", value=37.88, format="%.5f")
 
-housing_median_age = st.number_input("Housing Median Age", min_value=1.0, value=41.0)
+housing_median_age = st.number_input(
+    "Average Age of Homes in the Area", min_value=1.0, value=41.0
+)
 
-total_rooms = st.number_input("Total Rooms", min_value=1.0, value=2000.0)
+total_rooms = st.number_input("Total Rooms in the Area", min_value=1.0, value=2000.0)
 
-total_bedrooms = st.number_input("Total Bedrooms", min_value=1.0, value=400.0)
+total_bedrooms = st.number_input(
+    "Total Bedrooms in the Area", min_value=1.0, value=400.0
+)
 
-population = st.number_input("Population", min_value=1.0, value=1000.0)
+population = st.number_input("Population in the Area", min_value=1.0, value=1000.0)
 
-households = st.number_input("Households", min_value=1.0, value=400.0)
+households = st.number_input("Households in the Area", min_value=1.0, value=400.0)
 
-median_income = st.number_input("Median Income", min_value=0.0, value=5.0)
+median_income = st.number_input(
+    "Average Household Income in the Area", min_value=0.0, value=5.0
+)
 
 ocean_proximity = st.selectbox(
     "Ocean Proximity", ["<1H OCEAN", "INLAND", "ISLAND", "NEAR BAY", "NEAR OCEAN"]
@@ -49,4 +58,4 @@ if st.button("Predict Price"):
 
     prediction = model.predict(new_house)[0]
 
-    st.success(f"Estimated House Price: ${prediction:,.2f}")
+    st.success(f"Estimated Typical House Price in this Area: ${prediction:,.2f}")
