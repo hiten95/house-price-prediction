@@ -40,7 +40,14 @@ median_income = st.number_input(
 ocean_proximity = st.selectbox(
     "Ocean Proximity", ["<1H OCEAN", "INLAND", "ISLAND", "NEAR BAY", "NEAR OCEAN"]
 )
+st.subheader("Selected Area on Map")
 
+map_data = pd.DataFrame({
+    "latitude": [latitude],
+    "longitude": [longitude]
+})
+
+st.map(map_data, zoom=8)
 if st.button("Predict Price"):
     new_house = pd.DataFrame(
         {
